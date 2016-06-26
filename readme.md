@@ -1,0 +1,1 @@
+Playing around with a SQLite3 database with Xcode. Loading in data from JSON, creating/dropping a database... mostly learning about getting C and Swift to play together nicely.
