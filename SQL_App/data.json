@@ -1,0 +1,32 @@
+{
+    "Places" : [
+        {
+            "Longitude" : 100.23298049382,
+            "Latitude" : 928.9893908902,
+            "Category" : "Food",
+            "Subcategory" : "Coffee & Tea",
+            "Name" : "DeGore Haus",
+            "Address" : "5535 Beeler St, Pittsburgh PA 15217",
+            "Phone" : "309-309-1020",
+            "Open_hour" : "12:00",
+            "Close_hour" : "19:00",
+            "Image_url" : "./img/pug.png",
+            "Tags" : ["tag1", "tag2", "tag3"]
+        },
+        {
+            "Longitude" : 100.23298049382,
+            "Latitude" : 928.9893908902,
+            "Category" : "Food",
+            "Subcategory" : "Coffee & Tea",
+            "Name" : "DeGore Haus",
+            "Address" : "5535 Beeler St, Pittsburgh PA 15217",
+            "Phone" : "309-309-1020",
+            "Open_hour" : "12:00",
+            "Close_hour" : "19:00",
+            "Image_url" : "./img/pug.png",
+            "Tags" : ["tag1", "tag2", "tag3"]
+        }
+    ],
+
+    "How-tos" : []
+}

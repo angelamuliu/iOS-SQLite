@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "static SQLiteDatabase.(populate in _686BE5B0983B86E06D39DD7F26A75FF8)() -&gt; ():SQLiteDatabase.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "jsonDict[&quot;places&quot;]">
+            </PersistentString>
+            <PersistentString
+               value = "jsonDict.valueForKey(&quot;Places&quot;)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static SQLiteDatabase.(insertPlaces in _686BE5B0983B86E06D39DD7F26A75FF8)(COpaquePointer, placesArr : NSArray) -&gt; ():SQLiteDatabase.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "placeDict.valueForKey(&quot;Tags&quot;) as! NSArray">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
