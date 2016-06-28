@@ -17,7 +17,22 @@ class ViewController: UIViewController {
         // Messing with SQLite
         SQLiteDatabase.create()
         
+        guard let connection = try? SQLiteDatabase.open() else {
+           return
+        }
+        connection.getPlaces("14:00", longitude: 50, latitude: 900, radius: 100)
         
+        connection.close()
+        
+        
+    }
+    
+    @IBAction func get() {
+        guard let connection = try? SQLiteDatabase.open() else {
+            return
+        }
+//        connection.getPlaces(50, latitude: 100, radius: 100)
+        connection.close()
     }
 
     override func didReceiveMemoryWarning() {

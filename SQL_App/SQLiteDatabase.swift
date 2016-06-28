@@ -68,6 +68,11 @@ class SQLiteDatabase {
         }
     }
     
+    func close() {
+        print("Closing connection. Thanks!")
+        sqlite3_close(dbPointer)
+    }
+    
     
     // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
     // STATIC FUNCTIONS - DB MAINTENANCE
@@ -176,25 +181,74 @@ class SQLiteDatabase {
         }
     }
     
-    
-    
+    // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    // QUERY / ETC ...
+    // Uses an instance of a connection to the db
+    // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
+    private var errorMessage: String {
+        if let errorMessage = String.fromCString(sqlite3_errmsg(dbPointer)) {
+            return errorMessage
+        } else {
+            return "No error message provided from sqlite."
+        }
+    }
+
+    func prepareStatement(sql: String) throws -> COpaquePointer {
+        var statement: COpaquePointer = nil
+        guard sqlite3_prepare_v2(dbPointer, sql, -1, &statement, nil) == SQLITE_OK else {
+            throw SQLiteError.Prepare(message: errorMessage)
+        }
+        return statement
+    }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    /**
+      Given a longitude, latitude, and search radius, and current time (in string format e.g. '0:20'), 
+      returns (roughly) all open places within the radius... though as a square
+    */
+    func getPlaces(time:String, longitude:Float, latitude:Float, radius:Float) -> [Place] {
+        var placesArr = [Place]()
+        let querySql = "SELECT * FROM Place WHERE Longitude BETWEEN ? AND ? AND Latitude BETWEEN ? AND ? AND ? BETWEEN Open_hour AND Close_hour;"
+
+        guard let queryStatement = try? prepareStatement(querySql) else { // If the statement after guard fails, we stop trying to get altogether
+            return []
+        }
+        
+        defer { sqlite3_finalize(queryStatement) }
+        
+        let longitude_start = longitude - radius
+        let longitude_end = longitude + radius
+        let latitude_start = latitude - radius
+        let latitude_end = latitude + radius
+        
+        sqlite3_bind_double(queryStatement, 1, Double(longitude_start))
+        sqlite3_bind_double(queryStatement, 2, Double(longitude_end))
+        sqlite3_bind_double(queryStatement, 3, Double(latitude_start))
+        sqlite3_bind_double(queryStatement, 4, Double(latitude_end))
+        sqlite3_bind_text(queryStatement, 5, time.cStringUsingEncoding(NSUTF8StringEncoding)!, -1, nil)
+        
+        while(true) {
+            guard sqlite3_step(queryStatement) == SQLITE_ROW else { // Stop looping when we step and it's not another record
+                break
+            }
+            // This looks terrible... 
+            let row_id:Int = Int(sqlite3_column_int(queryStatement, 0))
+            let row_longitude:Float = Float(sqlite3_column_double(queryStatement, 1))
+            let row_latitude:Float = Float(sqlite3_column_double(queryStatement, 2))
+            let row_category = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(queryStatement, 3)))
+            let row_subcategory = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(queryStatement, 4)))
+            let row_name = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(queryStatement, 5)))
+            let row_address = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(queryStatement, 6)))
+            let row_phone = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(queryStatement, 7)))
+            let row_open_hour = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(queryStatement, 8)))
+            let row_close_hour = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(queryStatement, 9)))
+            let row_image_url = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(queryStatement, 10)))
+            let row_tags = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(queryStatement, 11)))
+            
+            placesArr.append(Place(id: row_id, longitude: row_longitude, latitude: row_latitude, category: row_category, subcategory: row_subcategory, name: row_name, address: row_address, phone: row_phone, open_hour: row_open_hour, close_hour: row_close_hour, image_url: row_image_url, tags: row_tags))
+        }
+        return placesArr
+    }
     
     
 
