@@ -13,6 +13,7 @@
 		0B3D9FFD1D1F301B005F6312 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B3D9FFC1D1F301B005F6312 /* Assets.xcassets */; };
 		0B3DA0001D1F301B005F6312 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B3D9FFE1D1F301B005F6312 /* LaunchScreen.storyboard */; };
 		0B3DA0081D1F322C005F6312 /* SQLiteDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3DA0071D1F322C005F6312 /* SQLiteDatabase.swift */; };
+		0BADF8B51D220EA400821153 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BADF8B41D220EA400821153 /* Place.swift */; };
 		0BC5BEC41D1F3A4200554F73 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC5BEC31D1F3A4200554F73 /* libsqlite3.0.tbd */; };
 		0BC5BEC71D1F75A500554F73 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 0BC5BEC51D1F75A500554F73 /* data.json */; };
 		0BC5BEC81D1F75A500554F73 /* db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 0BC5BEC61D1F75A500554F73 /* db.sqlite */; };
@@ -28,6 +29,7 @@
 		0B3DA0011D1F301B005F6312 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B3DA0071D1F322C005F6312 /* SQLiteDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteDatabase.swift; sourceTree = "<group>"; };
 		0B3DA00C1D1F363B005F6312 /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
+		0BADF8B41D220EA400821153 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		0BC5BEC31D1F3A4200554F73 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		0BC5BEC51D1F75A500554F73 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		0BC5BEC61D1F75A500554F73 /* db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.sqlite; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				0B3D9FF51D1F301B005F6312 /* AppDelegate.swift */,
 				0B3D9FF71D1F301B005F6312 /* ViewController.swift */,
 				0B3DA0071D1F322C005F6312 /* SQLiteDatabase.swift */,
+				0BADF8B41D220EA400821153 /* Place.swift */,
 				0B3D9FF91D1F301B005F6312 /* Main.storyboard */,
 				0B3D9FFC1D1F301B005F6312 /* Assets.xcassets */,
 				0B3D9FFE1D1F301B005F6312 /* LaunchScreen.storyboard */,
@@ -156,6 +159,7 @@
 				0B3D9FF81D1F301B005F6312 /* ViewController.swift in Sources */,
 				0B3D9FF61D1F301B005F6312 /* AppDelegate.swift in Sources */,
 				0B3DA0081D1F322C005F6312 /* SQLiteDatabase.swift in Sources */,
+				0BADF8B51D220EA400821153 /* Place.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -21,5 +21,19 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "SQLiteDatabase.get(Float, latitude : Float, radius : Float) -&gt; ():SQLiteDatabase.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "sqlite3_step(queryStatement)">
+            </PersistentString>
+            <PersistentString
+               value = "sqlite3_column_double(queryStatement, 0)">
+            </PersistentString>
+            <PersistentString
+               value = "sqlite3_column_text(queryStatement, 3)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>
